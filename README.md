@@ -14,24 +14,23 @@ This project involves setting up and configuring a pfSense firewall in a virtual
 1. **Download and Install Virtualization Software**
    - [Download VirtualBox](https://www.virtualbox.org/)
    - Install the software following the on-screen instructions.
+   - ![Download virtualbox](https://github.com/user-attachments/assets/f3bf4194-710b-4923-9f64-7c2a83288e8c)
 
 2. **Download pfSense ISO**
    - [Download pfSense ISO](https://www.pfsense.org/download/) for the desired architecture (usually amd64).
+   - ![Screenshot (2)](https://github.com/user-attachments/assets/d742bcf1-1519-4e3f-b052-4b39a1133805)
 
 ### Step 2: Creating a Virtual Machine for pfSense
-1. **Open VirtualBox/VMware**
+1. **Open VirtualBox**
    - Launch your chosen virtualization software.
 
 2. **Create a New Virtual Machine**
    - **VirtualBox**:
      - Click "New".
-     - Name the VM (e.g., "pfSense Firewall").
+     - Name the VM (e.g., "pfSense").
      - Set the type to "BSD" and version to "FreeBSD (64-bit)".
      - Click "Next".
-   - **VMware**:
-     - Click "Create a New Virtual Machine".
-     - Select "Installer disc image file (iso)" and browse to the pfSense ISO file.
-     - Click "Next".
+  ![Screenshot (3)](https://github.com/user-attachments/assets/dccce8df-c0b8-4c3b-a313-39eb04a543ad)
 
 3. **Allocate Resources**
    - **Memory**:
@@ -42,6 +41,8 @@ This project involves setting up and configuring a pfSense firewall in a virtual
      - Set the disk size to at least 10 GB.
      - Use the default options for disk type and storage allocation.
      - Click "Create".
+     - ![Screenshot (4)](https://github.com/user-attachments/assets/4b3f77ae-7b37-4efe-8af5-4ee1132aaa12)
+
 
 4. **Attach the pfSense ISO**
    - **VirtualBox**:
@@ -49,21 +50,16 @@ This project involves setting up and configuring a pfSense firewall in a virtual
      - Go to "Storage" and click on the empty CD/DVD drive.
      - Click the disk icon next to "Optical Drive" and choose "Choose a disk file".
      - Browse to the pfSense ISO file and select it.
-   - **VMware**:
-     - Select the VM and click "Edit virtual machine settings".
-     - Select "CD/DVD (SATA)" and choose "Use ISO image file".
-     - Browse to the pfSense ISO file and select it.
 
 ### Step 3: Installing pfSense
 1. **Start the VM**
    - **VirtualBox**: Select the VM and click "Start".
-   - **VMware**: Select the VM and click "Power on this virtual machine".
-
 2. **Follow Installation Prompts**
    - Select the default options for language and keymap.
    - Choose "Install" from the pfSense installer menu.
    - Select the appropriate partition scheme (usually the default).
    - Wait for the installation to complete.
+   - ![Screenshot (5)](https://github.com/user-attachments/assets/55d9cb10-2440-485a-9b0c-554001794d41)
 
 3. **Complete the Installation**
    - Once the installation is complete, remove the ISO from the virtual drive.
@@ -83,21 +79,26 @@ This project involves setting up and configuring a pfSense firewall in a virtual
        Which interface do you want to configure as WAN? (em0)
        Which interface do you want to configure as LAN? (em1)
        ```
+       ![Screenshot (6)](https://github.com/user-attachments/assets/d2e8c5d6-d108-447a-aa65-cabd31974834)
+
 
 2. **Access pfSense Web Interface**
    - Connect a device to the LAN interface.
    - Set the device's network settings to DHCP or manually assign an IP address in the same subnet as the pfSense LAN IP.
    - Open a web browser and navigate to the LAN IP address (default is usually `192.168.1.1`).
    - Log in with default credentials (username: `admin`, password: `pfsense`).
+   - ![Screenshot (7)](https://github.com/user-attachments/assets/39ae5aca-c900-4797-8458-defaeffff561)
 
 3. **Wizard Setup**
    - Follow the initial setup wizard in the web interface to configure basic settings such as hostname, domain, DNS servers, and password.
      - **Step 1**: Welcome to pfSense Setup Wizard.
      - **Step 2**: General Information (hostname, domain, DNS servers).
+     - ![Screenshot (10)](https://github.com/user-attachments/assets/923d0c24-25fb-4dad-8b79-9432739e2467)
      - **Step 3**: Time Server Information (set NTP server if needed).
      - **Step 4**: WAN Configuration (set IP address type, usually DHCP for home networks).
      - **Step 5**: LAN Configuration (confirm or change LAN IP address).
      - **Step 6**: Set Admin WebGUI Password.
+     - ![Screenshot (11)](https://github.com/user-attachments/assets/651203e7-348f-4c7c-9a55-60716ac95aa9)
      - **Step 7**: Reload configuration and complete setup.
 
 ### Step 5: Configuring Firewall Rules
@@ -119,6 +120,8 @@ This project involves setting up and configuring a pfSense firewall in a virtual
      - **Destination Port Range**: HTTP (80) and HTTPS (443)
      - **Description**: Allow HTTP/HTTPS traffic from LAN to WAN
    - Save and apply changes.
+   - ![Screenshot (12)](https://github.com/user-attachments/assets/217d0aa2-b5bc-4775-9564-58319e15bb32)
+
 
 4. **Testing Firewall Rules**
    - On a device connected to the LAN, try accessing the internet to ensure rules are working.
@@ -129,6 +132,7 @@ This project involves setting up and configuring a pfSense firewall in a virtual
    - Go to "Status" > "System Logs" in the pfSense web interface.
    - Review logs to see traffic allowed and blocked by the firewall.
      - Logs are categorized by type (e.g., Firewall, DHCP, System).
+     - ![Screenshot (13)](https://github.com/user-attachments/assets/270c933d-1d5b-4a6b-ae52-27208230229a)
 
 2. **Enable Additional Logging**
    - Configure logging options in "Status" > "System Logs" > "Settings".
@@ -143,37 +147,7 @@ This project involves setting up and configuring a pfSense firewall in a virtual
    - Review logs and reports to identify any unusual traffic patterns or potential threats.
    - Document your findings and any actions taken to mitigate threats.
 
-### Step 8: Documentation and Presentation
-1. **Document the Setup Process**
-   - Write detailed documentation of each step, including screenshots.
-   - Explain the rationale behind each configuration decision.
-
-2. **Create a Presentation**
-   - Prepare a presentation summarizing your project.
-   - Highlight key configurations, rules created, and any significant findings from your analysis.
-
-## Deliverables
-- Detailed documentation of the setup process.
-- Screenshots of configurations and logs.
-- A summary report of traffic patterns and potential threats.
-- A presentation highlighting key aspects of the project.
-
----
-
-## Screenshots
-![VirtualBox New VM](path/to/your/screenshot1.png)
-![pfSense Installation](path/to/your/screenshot2.png)
-![pfSense Web Interface](path/to/your/screenshot3.png)
-
----
-
 ## Summary Report
 Include a brief summary report here on traffic patterns, potential threats identified, and any actions taken to mitigate these threats.
 
 ---
-
-## Presentation
-Link to the presentation file (e.g., PDF, PowerPoint) here.
-
-[Presentation](path/to/your/presentation.pdf)
-
