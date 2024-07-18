@@ -145,7 +145,7 @@ This project involves setting up and configuring a pfSense firewall in a virtual
 
 2. **Analyze Traffic Patterns**
    - Review logs and reports to identify any unusual traffic patterns or potential threats.
-   - Document your findings and any actions taken to mitigate threats.
+   - Document findings and any actions taken to mitigate threats.
 
 ## Summary Report
 Include a brief summary report here on traffic patterns, potential threats identified, and any actions taken to mitigate these threats.
